@@ -1,0 +1,10 @@
+= Spring REST Docs
+:doctype: book
+:source-highlighter: coderay
+:toc: left
+:toclevels: 3
+:sectlinks:
+
+== API
+include::sample.adoc[]
+

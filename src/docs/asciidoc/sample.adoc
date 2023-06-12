@@ -1,0 +1,9 @@
+=== sample
+
+==== HTTP request
+
+include::{snippets}/sample/http-request.adoc[]
+
+==== HTTP response
+
+include::{snippets}/sample/http-response.adoc[]

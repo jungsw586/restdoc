@@ -1,0 +1,26 @@
+openapi: 3.0.1
+info:
+  title: spring-rest-docs to OAS
+  description: Spring REST Docs 테스트 생성물 생성시 추가생성되는 OAS
+  version: 0.0.1-SNAPSHOT
+servers:
+- url: http://localhost:8080
+tags: []
+paths:
+  /:
+    get:
+      operationId: sample
+      responses:
+        "200":
+          description: "200"
+          content:
+            text/plain;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/486549215'
+              examples:
+                sample:
+                  value: hello world
+components:
+  schemas:
+    "486549215":
+      type: object
