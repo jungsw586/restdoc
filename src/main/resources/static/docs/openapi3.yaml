@@ -23,13 +23,13 @@ paths:
                 user.getAll:
                   value: |-
                     [ {
-                      "id" : "442c2c46-3f94-4100-9bc4-b132f4ed8189",
+                      "id" : "5e4885e5-0829-447e-a407-ef107522192e",
                       "name" : "jeff"
                     }, {
-                      "id" : "47ed0318-a1f9-4ac4-aa87-3d1b859e05e9",
+                      "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
                       "name" : "justin"
                     }, {
-                      "id" : "47ed0318-a1f9-4ac4-aa87-3d1b859e05e9",
+                      "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
                       "name" : "justin"
                     } ]
     put:
@@ -40,12 +40,12 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: '#/components/schemas/users103855575'
+              $ref: '#/components/schemas/users-id103855575'
             examples:
               user.update:
                 value: |-
                   {
-                    "id" : "c92761ef-b957-43fa-8bf8-b61fad464ea5",
+                    "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
                     "name" : "SW"
                   }
       responses:
@@ -54,12 +54,12 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/users103855575'
+                $ref: '#/components/schemas/users-id103855575'
               examples:
                 user.update:
                   value: |-
                     {
-                      "id" : "c92761ef-b957-43fa-8bf8-b61fad464ea5",
+                      "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
                       "name" : "SW"
                     }
     post:
@@ -83,12 +83,12 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/users103855575'
+                $ref: '#/components/schemas/users-id103855575'
               examples:
                 user.create:
                   value: |-
                     {
-                      "id" : "8cea3b97-6cc0-4e85-bac3-67157c1ed98e",
+                      "id" : "bb8b2999-6c5b-40bd-8a42-1bc76a549b2c",
                       "name" : "chloe"
                     }
   /users/{id}:
@@ -109,12 +109,12 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/users103855575'
+                $ref: '#/components/schemas/users-id103855575'
               examples:
                 user.getOneById:
                   value: |-
                     {
-                      "id" : "e43a43be-26f2-4a01-858b-3bf48f8e5b3a",
+                      "id" : "71d42995-c0d9-4624-89ef-ee95229c7ba2",
                       "name" : "jeff"
                     }
     delete:
@@ -150,7 +150,7 @@ components:
         name:
           type: string
           description: 사용자 이름
-    users103855575:
+    users-id103855575:
       type: object
       properties:
         name:
