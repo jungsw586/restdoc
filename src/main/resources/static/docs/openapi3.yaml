@@ -1,0 +1,161 @@
+openapi: 3.0.1
+info:
+  title: spring-rest-docs to OAS
+  description: Spring REST Docs 테스트 생성물 생성시 추가생성되는 OAS
+  version: 0.0.1-SNAPSHOT
+servers:
+- url: http://localhost:8080
+tags: []
+paths:
+  /users:
+    get:
+      tags:
+      - users
+      operationId: user.getAll
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/users-1906100304'
+              examples:
+                user.getAll:
+                  value: |-
+                    [ {
+                      "id" : "442c2c46-3f94-4100-9bc4-b132f4ed8189",
+                      "name" : "jeff"
+                    }, {
+                      "id" : "47ed0318-a1f9-4ac4-aa87-3d1b859e05e9",
+                      "name" : "justin"
+                    }, {
+                      "id" : "47ed0318-a1f9-4ac4-aa87-3d1b859e05e9",
+                      "name" : "justin"
+                    } ]
+    put:
+      tags:
+      - users
+      operationId: user.update
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/users103855575'
+            examples:
+              user.update:
+                value: |-
+                  {
+                    "id" : "c92761ef-b957-43fa-8bf8-b61fad464ea5",
+                    "name" : "SW"
+                  }
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/users103855575'
+              examples:
+                user.update:
+                  value: |-
+                    {
+                      "id" : "c92761ef-b957-43fa-8bf8-b61fad464ea5",
+                      "name" : "SW"
+                    }
+    post:
+      tags:
+      - users
+      operationId: user.create
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/users-20489308'
+            examples:
+              user.create:
+                value: |-
+                  {
+                    "name" : "chloe"
+                  }
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/users103855575'
+              examples:
+                user.create:
+                  value: |-
+                    {
+                      "id" : "8cea3b97-6cc0-4e85-bac3-67157c1ed98e",
+                      "name" : "chloe"
+                    }
+  /users/{id}:
+    get:
+      tags:
+      - users
+      operationId: user.getOneById
+      parameters:
+      - name: id
+        in: path
+        description: 사용자 ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/users103855575'
+              examples:
+                user.getOneById:
+                  value: |-
+                    {
+                      "id" : "e43a43be-26f2-4a01-858b-3bf48f8e5b3a",
+                      "name" : "jeff"
+                    }
+    delete:
+      tags:
+      - users
+      operationId: user.deleteOneById
+      parameters:
+      - name: id
+        in: path
+        description: 사용자 ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+components:
+  schemas:
+    users-1906100304:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: 사용자 이름
+          id:
+            type: string
+            description: 사용자 아이디
+    users-20489308:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 사용자 이름
+    users103855575:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 사용자 이름
+        id:
+          type: string
+          description: 사용자 아이디

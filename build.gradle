@@ -28,10 +28,6 @@ ext {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
-    //<--swagger
-//    implementation("org.springdoc:springdoc-openapi-ui:1.6.11")
-//    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.6.11")
-    //-->>
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
@@ -54,6 +50,25 @@ tasks.named('asciidoctor') {
     inputs.dir snippetsDir
     configurations "asciidoctorExt"
     baseDirFollowsSourceDir()
+
+    copy {
+        from "${asciidoctor.outputDir}"
+        into "src/main/resources/static/docs"
+    }
+}
+
+tasks.register("restDocsTest", Test) {
+    outputs.dir snippetsDir
+    useJUnitPlatform {
+        includeTags("restDocs")
+    }
+
+    finalizedBy "asciidoctor"
+    finalizedBy "openapi3"
+}
+
+tasks.register("apiBuild", GradleBuild) {
+    tasks = ["clean", "restDocsTest", "build"]
 }
 
 openapi3 {
@@ -64,16 +79,13 @@ openapi3 {
     description = 'Spring REST Docs 테스트 생성물 생성시 추가생성되는 OAS'
     version = "${project.version}"
     format = 'yaml'
+
+    copy {
+        from "build/api-spec"
+        into "src/main/resources/static/docs"
+    }
 }
 
 tasks.named('bootJar') {
     dependsOn asciidoctor
-    copy {
-        from "${asciidoctor.outputDir}"
-        into "src/main/resources/static/docs"
-    }
-    copy {
-        from "build/api-spec"
-        into "src/main/resources/static/oas"
-    }
 }

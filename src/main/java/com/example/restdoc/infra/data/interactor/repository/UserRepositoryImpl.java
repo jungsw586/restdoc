@@ -29,14 +29,14 @@ public class UserRepositoryImpl implements UserRepository {
     userMbRepository.findOneBy(user.getId())
         .ifPresentOrElse(
             userMbRepository::update,
-            ()->userMbRepository.insert(user)
+            () -> userMbRepository.insert(user)
         );
 
     return user;
   }
 
   @Override
-  public void deleteOneBy(String id) {
-    userMbRepository.deleteOneBy(id);
+  public void deleteOne(UserVo userVo) {
+    userMbRepository.deleteOneBy(userVo.getId());
   }
 }

@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException.InternalServerError;
 
 @RestController
 @RequestMapping("/users")
@@ -46,7 +48,7 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<UserResponse> getOneBy(
+  public ResponseEntity<UserResponse> getOneById(
       @PathVariable String id
   ) {
     User user = userService.getOneBy(id);
@@ -63,7 +65,7 @@ public class UserController {
   }
 
   @PostMapping()
-  public ResponseEntity<UserResponse> createUser(
+  public ResponseEntity<UserResponse> create(
       @RequestBody CreateUserRequest request
   ) {
     User user = userService.create(
@@ -82,7 +84,7 @@ public class UserController {
   }
 
   @PutMapping()
-  public ResponseEntity<UserResponse> udpateUser(
+  public ResponseEntity<UserResponse> update(
       @RequestBody UpdateUserRequest request
   ) {
     User user = userService.update(
@@ -104,7 +106,7 @@ public class UserController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity deleteOneBy(
+  public ResponseEntity deleteOneById(
       @PathVariable String id
   ) {
     userService.deleteOneBy(

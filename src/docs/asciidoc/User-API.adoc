@@ -1,0 +1,16 @@
+== User API
+
+=== User 전체 조회
+operation::user.getAll[]
+
+=== User 단건 조회
+operation::user.getOneById[]
+
+=== User 단건 조회
+operation::user.create[]
+
+=== User 단건 조회
+operation::user.update[]
+
+=== User 단건 조회
+operation::user.deleteOneById[]

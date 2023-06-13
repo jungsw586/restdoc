@@ -5,6 +5,4 @@
 :toclevels: 3
 :sectlinks:
 
-== API
-include::sample.adoc[]
-
+include::User-API.adoc[]

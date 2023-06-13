@@ -13,5 +13,5 @@ public interface UserRepository {
 
   UserVo save(UserVo user);
 
-  void deleteOneBy(String id);
+  void deleteOne(UserVo user);
 }
