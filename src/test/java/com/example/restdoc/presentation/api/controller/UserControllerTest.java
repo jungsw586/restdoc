@@ -1,13 +1,7 @@
 package com.example.restdoc.presentation.api.controller;
 
-import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
@@ -30,18 +24,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper;
 import com.example.restdoc.domain.entity.User;
 import com.example.restdoc.domain.interactor.repository.UserRepository;
-import com.example.restdoc.domain.service.UserService;
 import com.example.restdoc.domain.service.model.command.CreateUserCommand;
-import com.example.restdoc.domain.service.model.command.DeleteOneUserCommand;
 import com.example.restdoc.domain.service.model.command.UpdateUserCommand;
 import com.example.restdoc.infra.data.mybatis.vo.UserVo;
 import com.example.restdoc.presentation.api.controller.request.CreateUserRequest;
 import com.example.restdoc.presentation.api.controller.request.UpdateUserRequest;
-import com.example.restdoc.presentation.api.controller.response.UserResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -49,7 +37,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -68,23 +55,20 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-//@AutoConfigureMockMvc // -> webAppContextSetup(webApplicationContext)
-//@AutoConfigureRestDocs // -> apply(documentationConfiguration(restDocumentation))
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @SpringBootTest
 @DisplayName("User API")
 class UserControllerTest {
+  private MockMvc mockMvc;
 
   @Autowired
-  WebApplicationContext webApplicationContext;
+  private WebApplicationContext webApplicationContext;
 
-  private MockMvc mockMvc;
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @MockBean
   private UserRepository userRepository;
-
-  @Autowired
-  ObjectMapper objectMapper;
 
   private final PathParametersSnippet PathVariableUserId = pathParameters(
       parameterWithName("id").description("사용자 ID")
@@ -112,10 +96,6 @@ class UserControllerTest {
     return objectMapper.writeValueAsString(object);
   }
 
-  private final User Jeff = new User(UUID.randomUUID().toString(), "jeff");
-  private final User Justin = new User(UUID.randomUUID().toString(), "justin");
-  private final User Kate = new User(UUID.randomUUID().toString(), "kate");
-
   @BeforeEach
   void init(RestDocumentationContextProvider restDocumentationContextProvider) {
     mockMvc = MockMvcBuilders
@@ -135,26 +115,23 @@ class UserControllerTest {
         .build();
   }
 
+  @Test
+  void getAll() throws Exception {
+    //given
+    User Jeff = new User(UUID.randomUUID().toString(), "jeff");
+    User Justin = new User(UUID.randomUUID().toString(), "justin");
+    User Kate = new User(UUID.randomUUID().toString(), "kate");
 
-  @BeforeEach
-  void setUserRepository() {
     UserVo jeff = new UserVo(Jeff.getId(), Jeff.getName());
     UserVo justin = new UserVo(Justin.getId(), Justin.getName());
-    UserVo kate = new UserVo(Justin.getId(), Justin.getName());
+    UserVo kate = new UserVo(Kate.getId(), Kate.getName());
+
     when(userRepository.findAll())
         .thenReturn(Stream.of(
             jeff,
             justin,
             kate
         ));
-    when(userRepository.findOneBy(jeff.getId())).thenReturn(Optional.of(jeff));
-    when(userRepository.findOneBy(justin.getId())).thenReturn(Optional.of(justin));
-    when(userRepository.findOneBy(kate.getId())).thenReturn(Optional.of(kate));
-  }
-
-  @Test
-  void getAll() throws Exception {
-    //given
 
     //when
     ResultActions performed = mockMvc.perform(
@@ -192,11 +169,14 @@ class UserControllerTest {
   @Test
   void getOneById() throws Exception {
     //given
-    String jeffId = Jeff.getId();
+    User Jeff = new User(UUID.randomUUID().toString(), "jeff");
+
+    when(userRepository.findOneBy(Jeff.getId()))
+        .thenReturn(Optional.of(new UserVo(Jeff.getId(), Jeff.getName())));
 
     //when
     ResultActions performed = mockMvc.perform(
-        get("/users/{id}", jeffId)
+        get("/users/{id}", Jeff.getId())
             .contentType(MediaType.APPLICATION_JSON)
     );
 
@@ -246,8 +226,8 @@ class UserControllerTest {
     performed
         .andExpect(status().isOk())
         .andExpect(content().string(this.responseBody(user)))
-        .andExpect(jsonPath("$.id").value(equalTo(user.getId())))
-        .andExpect(jsonPath("$.name").value(equalTo(user.getName())))
+        .andExpect(jsonPath("$.id").isString())
+        .andExpect(jsonPath("$.name").value(equalTo(request.getName())))
         .andDo(
             //rest doc
             MockMvcRestDocumentation.document(
@@ -269,10 +249,14 @@ class UserControllerTest {
   @Test
   void update() throws Exception {
     //given
+    User Jeff = new User(UUID.randomUUID().toString(), "jeff");
+
     UpdateUserRequest request = new UpdateUserRequest(Jeff.getId(), "SW");
     UpdateUserCommand command = new UpdateUserCommand(request.getId(), request.getName());
     User user = new User(command.getId(), command.getName());
     UserVo vo = new UserVo(user.getId(), user.getName());
+    when(userRepository.findOneBy(Jeff.getId()))
+        .thenReturn(Optional.of(new UserVo(Jeff.getId(), Jeff.getName())));
     when(userRepository.save(vo))
         .thenReturn(vo);
 
@@ -286,7 +270,7 @@ class UserControllerTest {
     //then
     performed
         .andExpect(status().isOk())
-        .andExpect(content().string(objectMapper.writeValueAsString(user)))
+        .andExpect(content().string(this.responseBody(user)))
         .andExpect(jsonPath("$.id").value(equalTo(user.getId())))
         .andExpect(jsonPath("$.name").value(equalTo(user.getName())))
         .andDo(
@@ -310,11 +294,13 @@ class UserControllerTest {
   @Test
   void deleteOneById() throws Exception {
     //given
-    String jeffId = Jeff.getId();
+    User Jeff = new User(UUID.randomUUID().toString(), "jeff");
+    when(userRepository.findOneBy(Jeff.getId()))
+        .thenReturn(Optional.of(new UserVo(Jeff.getId(), Jeff.getName())));
 
     //when
     ResultActions delete = mockMvc.perform(
-        delete("/users/{id}", jeffId)
+        delete("/users/{id}", Jeff.getId())
             .contentType(MediaType.APPLICATION_JSON)
     );
 

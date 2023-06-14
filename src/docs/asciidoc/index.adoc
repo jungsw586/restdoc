@@ -1,8 +1,8 @@
-= Spring REST Docs
+= Spring REST Docs 문서입니다.
 :doctype: book
 :source-highlighter: coderay
 :toc: left
 :toclevels: 3
 :sectlinks:
 
-include::User-API.adoc[]
+include::user-api.adoc[]

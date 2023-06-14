@@ -4,6 +4,3 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/mybatis
     username: root
     password: 3434
-
-springdoc:
-  packages-to-scan: com.example.restdoc

@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: spring-rest-docs to OAS
-  description: Spring REST Docs 테스트 생성물 생성시 추가생성되는 OAS
+  title: Swagger 문서입니다.
+  description: 이 문서는Spring REST Docs 기반으로 생성되었습니다.
   version: 0.0.1-SNAPSHOT
 servers:
 - url: http://localhost:8080
@@ -23,14 +23,14 @@ paths:
                 user.getAll:
                   value: |-
                     [ {
-                      "id" : "5e4885e5-0829-447e-a407-ef107522192e",
+                      "id" : "5349d5a1-5c0b-4bf5-9f4f-b582e8799da2",
                       "name" : "jeff"
                     }, {
-                      "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
+                      "id" : "360385d8-2c6c-4e0f-ab29-b4008265b79d",
                       "name" : "justin"
                     }, {
-                      "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
-                      "name" : "justin"
+                      "id" : "972b97a6-5ae7-4c17-b0ed-ca4fb4541a23",
+                      "name" : "kate"
                     } ]
     put:
       tags:
@@ -45,7 +45,7 @@ paths:
               user.update:
                 value: |-
                   {
-                    "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+                    "id" : "788518e1-f983-4caa-be32-340e00508b22",
                     "name" : "SW"
                   }
       responses:
@@ -59,7 +59,7 @@ paths:
                 user.update:
                   value: |-
                     {
-                      "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+                      "id" : "788518e1-f983-4caa-be32-340e00508b22",
                       "name" : "SW"
                     }
     post:
@@ -88,7 +88,7 @@ paths:
                 user.create:
                   value: |-
                     {
-                      "id" : "bb8b2999-6c5b-40bd-8a42-1bc76a549b2c",
+                      "id" : "c65a1dc6-9b18-4198-9755-e8365e630a7a",
                       "name" : "chloe"
                     }
   /users/{id}:
@@ -114,7 +114,7 @@ paths:
                 user.getOneById:
                   value: |-
                     {
-                      "id" : "71d42995-c0d9-4624-89ef-ee95229c7ba2",
+                      "id" : "bdba7938-b35d-4a24-9703-e612cc598a45",
                       "name" : "jeff"
                     }
     delete:

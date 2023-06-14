@@ -470,17 +470,17 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 222
+Content-Length: 220
 
 [ {
-  "id" : "5e4885e5-0829-447e-a407-ef107522192e",
+  "id" : "5349d5a1-5c0b-4bf5-9f4f-b582e8799da2",
   "name" : "jeff"
 }, {
-  "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
+  "id" : "360385d8-2c6c-4e0f-ab29-b4008265b79d",
   "name" : "justin"
 }, {
-  "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
-  "name" : "justin"
+  "id" : "972b97a6-5ae7-4c17-b0ed-ca4fb4541a23",
+  "name" : "kate"
 } ]</code></pre>
 </div>
 </div>
@@ -507,14 +507,14 @@ Content-Length: 222
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">[ {
-  "id" : "5e4885e5-0829-447e-a407-ef107522192e",
+  "id" : "5349d5a1-5c0b-4bf5-9f4f-b582e8799da2",
   "name" : "jeff"
 }, {
-  "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
+  "id" : "360385d8-2c6c-4e0f-ab29-b4008265b79d",
   "name" : "justin"
 }, {
-  "id" : "94641fce-4345-4180-b893-d99a7cacfeb5",
-  "name" : "justin"
+  "id" : "972b97a6-5ae7-4c17-b0ed-ca4fb4541a23",
+  "name" : "kate"
 } ]</code></pre>
 </div>
 </div>
@@ -555,7 +555,7 @@ Content-Length: 222
 <h4 id="_user_단건_조회_curl_request">Curl request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/users/71d42995-c0d9-4624-89ef-ee95229c7ba2' -i -X GET \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/users/bdba7938-b35d-4a24-9703-e612cc598a45' -i -X GET \
     -H 'Content-Type: application/json;charset=UTF-8'</code></pre>
 </div>
 </div>
@@ -564,7 +564,7 @@ Content-Length: 222
 <h4 id="_user_단건_조회_http_request">HTTP request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /users/71d42995-c0d9-4624-89ef-ee95229c7ba2 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /users/bdba7938-b35d-4a24-9703-e612cc598a45 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080</code></pre>
 </div>
@@ -579,7 +579,7 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 70
 
 {
-  "id" : "71d42995-c0d9-4624-89ef-ee95229c7ba2",
+  "id" : "bdba7938-b35d-4a24-9703-e612cc598a45",
   "name" : "jeff"
 }</code></pre>
 </div>
@@ -589,7 +589,7 @@ Content-Length: 70
 <h4 id="_user_단건_조회_httpie_request">HTTPie request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'http://localhost:8080/users/71d42995-c0d9-4624-89ef-ee95229c7ba2' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'http://localhost:8080/users/bdba7938-b35d-4a24-9703-e612cc598a45' \
     'Content-Type:application/json;charset=UTF-8'</code></pre>
 </div>
 </div>
@@ -629,7 +629,7 @@ Content-Length: 70
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-  "id" : "71d42995-c0d9-4624-89ef-ee95229c7ba2",
+  "id" : "bdba7938-b35d-4a24-9703-e612cc598a45",
   "name" : "jeff"
 }</code></pre>
 </div>
@@ -666,9 +666,9 @@ Content-Length: 70
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_단건_조회_2">User 단건 조회</h3>
+<h3 id="_user_생성">User 생성</h3>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_curl_request">Curl request</h4>
+<h4 id="_user_생성_curl_request">Curl request</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/users' -i -X POST \
@@ -680,7 +680,7 @@ Content-Length: 70
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_http_request">HTTP request</h4>
+<h4 id="_user_생성_http_request">HTTP request</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /users HTTP/1.1
@@ -695,7 +695,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_http_response">HTTP response</h4>
+<h4 id="_user_생성_http_response">HTTP response</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
@@ -703,14 +703,14 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 71
 
 {
-  "id" : "bb8b2999-6c5b-40bd-8a42-1bc76a549b2c",
+  "id" : "c65a1dc6-9b18-4198-9755-e8365e630a7a",
   "name" : "chloe"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_httpie_request">HTTPie request</h4>
+<h4 id="_user_생성_httpie_request">HTTPie request</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ echo '{
@@ -721,7 +721,7 @@ Content-Length: 71
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_request_body">Request body</h4>
+<h4 id="_user_생성_request_body">Request body</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
@@ -731,7 +731,7 @@ Content-Length: 71
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_request_fields">Request fields</h4>
+<h4 id="_user_생성_request_fields">Request fields</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -755,18 +755,18 @@ Content-Length: 71
 </table>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_response_body">Response body</h4>
+<h4 id="_user_생성_response_body">Response body</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-  "id" : "bb8b2999-6c5b-40bd-8a42-1bc76a549b2c",
+  "id" : "c65a1dc6-9b18-4198-9755-e8365e630a7a",
   "name" : "chloe"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_2_response_fields">Response fields</h4>
+<h4 id="_user_생성_response_fields">Response fields</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -796,22 +796,22 @@ Content-Length: 71
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_단건_조회_3">User 단건 조회</h3>
+<h3 id="_user_수정">User 수정</h3>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_curl_request">Curl request</h4>
+<h4 id="_user_수정_curl_request">Curl request</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/users' -i -X PUT \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
-  "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+  "id" : "788518e1-f983-4caa-be32-340e00508b22",
   "name" : "SW"
 }'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_http_request">HTTP request</h4>
+<h4 id="_user_수정_http_request">HTTP request</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /users HTTP/1.1
@@ -820,14 +820,14 @@ Content-Length: 68
 Host: localhost:8080
 
 {
-  "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+  "id" : "788518e1-f983-4caa-be32-340e00508b22",
   "name" : "SW"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_http_response">HTTP response</h4>
+<h4 id="_user_수정_http_response">HTTP response</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
@@ -835,18 +835,18 @@ Content-Type: application/json;charset=UTF-8
 Content-Length: 68
 
 {
-  "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+  "id" : "788518e1-f983-4caa-be32-340e00508b22",
   "name" : "SW"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_httpie_request">HTTPie request</h4>
+<h4 id="_user_수정_httpie_request">HTTPie request</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ echo '{
-  "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+  "id" : "788518e1-f983-4caa-be32-340e00508b22",
   "name" : "SW"
 }' | http PUT 'http://localhost:8080/users' \
     'Content-Type:application/json;charset=UTF-8'</code></pre>
@@ -854,18 +854,18 @@ Content-Length: 68
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_request_body">Request body</h4>
+<h4 id="_user_수정_request_body">Request body</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-  "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+  "id" : "788518e1-f983-4caa-be32-340e00508b22",
   "name" : "SW"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_request_fields">Request fields</h4>
+<h4 id="_user_수정_request_fields">Request fields</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -894,18 +894,18 @@ Content-Length: 68
 </table>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_response_body">Response body</h4>
+<h4 id="_user_수정_response_body">Response body</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json">{
-  "id" : "a935e972-a1ca-49cf-9a30-1d55c481bcdb",
+  "id" : "788518e1-f983-4caa-be32-340e00508b22",
   "name" : "SW"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_3_response_fields">Response fields</h4>
+<h4 id="_user_수정_response_fields">Response fields</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -935,28 +935,28 @@ Content-Length: 68
 </div>
 </div>
 <div class="sect2">
-<h3 id="_user_단건_조회_4">User 단건 조회</h3>
+<h3 id="_user_단건_삭제">User 단건 삭제</h3>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_curl_request">Curl request</h4>
+<h4 id="_user_단건_삭제_curl_request">Curl request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/users/a4935c69-8a69-4734-a919-0aca15bd44d3' -i -X DELETE \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/users/96a444c7-ad80-43e1-af07-57d3a3151385' -i -X DELETE \
     -H 'Content-Type: application/json;charset=UTF-8'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_http_request">HTTP request</h4>
+<h4 id="_user_단건_삭제_http_request">HTTP request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /users/a4935c69-8a69-4734-a919-0aca15bd44d3 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /users/96a444c7-ad80-43e1-af07-57d3a3151385 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_http_response">HTTP response</h4>
+<h4 id="_user_단건_삭제_http_response">HTTP response</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK</code></pre>
@@ -964,16 +964,16 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_httpie_request">HTTPie request</h4>
+<h4 id="_user_단건_삭제_httpie_request">HTTPie request</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ http DELETE 'http://localhost:8080/users/a4935c69-8a69-4734-a919-0aca15bd44d3' \
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ http DELETE 'http://localhost:8080/users/96a444c7-ad80-43e1-af07-57d3a3151385' \
     'Content-Type:application/json;charset=UTF-8'</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_path_parameters">Path parameters</h4>
+<h4 id="_user_단건_삭제_path_parameters">Path parameters</h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. /users/{id}</caption>
 <colgroup>
@@ -995,7 +995,7 @@ Host: localhost:8080</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_request_body">Request body</h4>
+<h4 id="_user_단건_삭제_request_body">Request body</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code class="language-json" data-lang="json"></code></pre>
@@ -1003,7 +1003,7 @@ Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_user_단건_조회_4_response_body">Response body</h4>
+<h4 id="_user_단건_삭제_response_body">Response body</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight nowrap"><code></code></pre>
@@ -1017,7 +1017,7 @@ Host: localhost:8080</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-06-13 18:48:52 +0900
+Last updated 2023-06-14 11:59:47 +0900
 </div>
 </div>
 </body>
